@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review site</title>
+</head>
+<body>
+    <header style="display: flex; align-items: center; column-gap: 20px;">
+        <h2><a style="text-decoration: none;" href="{% url 'index_page' %}">Review site</a></h2>
+
+        <a href="{% url 'product_list' %}">Products</a>
+    </header>
+    <hr>
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

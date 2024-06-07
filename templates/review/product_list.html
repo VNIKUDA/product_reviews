@@ -1,0 +1,9 @@
+{% extends "review/base.html" %}
+{% block content %}
+    <h1>Product list:</h1>
+    <ul>
+        {% for product in product_list %}
+            <li>{{product.name}} - <a href="{% url 'product_page' product.id %}">about</a>.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

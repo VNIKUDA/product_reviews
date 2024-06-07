@@ -1,0 +1,38 @@
+{% extends "review/base.html" %}
+{% block content %}
+    <h2>Product page</h2>
+    
+    <p><b>Product:</b> {{product.name}}</p>
+    <p><b>Price:</b> ${{product.price}}</p>
+    <p><b>Description:</b> {{product.description}}</p>
+    <hr>
+
+    <h2>Write review</h2>
+    <form method="POST" action="{% url 'product_page' product.id %}">
+        {% csrf_token %}
+        <label for="review-author">Author: </label>
+        <input type="text" name="review-author" id="review-author" value="{{request.user.username}}">
+        <br><br>
+
+        <label for="review-rating">Rating: </label>
+        <input type="number" min="0" max="10" name="review-rating" id="review-rating" value="0">
+        <br><br>
+
+        <label for="review-text">Review: </label>
+        <textarea name="review-text" id="review-text"></textarea>
+        <br><br>
+
+        <input type="submit" value="Написати">
+    </form>
+    <br>
+    <hr>
+
+    <h2>Reviews</h2>
+    {% for review in reviews %}
+        <p style="border: solid black; padding: 3px;">
+            Author: {{review.author}} <br>
+            Rating: {{review.rating}} <br>
+            Review: {{review.text}}
+        </p>
+    {% endfor %}
+{% endblock %}
